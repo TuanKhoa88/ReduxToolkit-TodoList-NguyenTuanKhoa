@@ -1,38 +1,410 @@
-.App {
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f8ff;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container-title {
+  display: inline-block;
+  width: 100%;
+  font-size: 40px;
+  font-weight: 700;
   text-align: center;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 35px;
+  color: #646681;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container-title:hover {
+  color: #585858;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.rainbow-effect {
+  display: inline-block;
+  animation: rainbow 3s infinite;
+}
+
+.mg-right {
+  margin-right: 10px;
+}
+
+@keyframes rainbow {
+  0% {
+    color: red;
+    transform: translateY(0px);
+  }
+
+  14% {
+    color: #ff8c00;
+    transform: translateY(-1px);
+  }
+
+  28% {
+    color: #00cc00;
+    transform: translateY(0px);
+  }
+
+  42% {
+    color: green;
+    transform: translateY(-1px);
+  }
+
+  57% {
+    color: blue;
+    transform: translateY(0px);
+  }
+
+  71% {
+    color: indigo;
+    transform: translateY(-1px);
+  }
+
+  85% {
+    color: violet;
+    transform: translateY(0px);
+  }
+
+  100% {
+    color: red;
+    transform: translateY(-1px);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  max-width: 80%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header-task {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  background-color: #ecedf6;
+  max-width: 550px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  transform: translateY(-100%);
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #eee;
+  color: #585858;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  cursor: pointer;
+  transition: 0.3s ease all;
+  z-index: -1;
+}
+
+.modal-close-btn:hover {
+  background-color: #e32525;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-form {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal-form-title {
+  color: #646681;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+}
+
+.modal-form label {
+  font-size: 25px;
+  color: #646681;
+}
+
+.modal-form input,
+.modal-form select {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: white;
+  font-size: 25px;
+}
+
+.modal-submit-btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.todolist-container {
+  background-color: #ecedf6;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.no-todo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #585858;
+  text-align: center;
+  margin: 0 auto;
+  padding: 7px 15px;
+  border-radius: 3px;
+  background-color: #dedfe1;
+  width: max-content;
+  height: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: white;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.todo-item:last-child {
+  margin-bottom: 0;
+}
+
+.todo-item-detail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.todo-item-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.todoText {
+  word-break: break-all;
+  font-weight: 500;
+  font-size: 20px;
+  color: #585858;
+}
+
+.todoText.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-time {
+  display: block;
+  font-size: 17px;
+  font-weight: 300;
+  margin-top: 3px;
+  color: #585858;
+  width: 200px;
+}
+
+.todo-icon {
+  font-size: 25px;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #eee;
+  color: #585858;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+}
+
+.todo-icon:hover {
+  background-color: #dedfe1;
+}
+
+.todo-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.check-box {
+  flex-basis: 25px;
+  flex-shrink: 0;
+  height: 25px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+}
+
+.check-box:hover {
+  background-color: #dedfe1;
+}
+
+.check-box-border {
+  width: 100%;
+  height: 100%;
+  stroke: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.check-box {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.check-box.checked {
+  background-color: #646ff0;
+}
+
+.check-box .check-box-border {
+  width: 12px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-left: none;
+  border-top: none;
+  border-radius: 1px;
+  transform: rotate(40deg);
+  margin-top: -6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.check-box.checked .check-box-border {
+  opacity: 1;
+}
+
+.add-task-btn {
+  display: inline-block;
+  height: auto;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+  color: white;
+  background-color: #646ff0;
+  width: 180px;
+}
+
+.add-task-btn:hover {
+  color: #f2f2f2;
+  background-color: #3f51b5;
+}
+
+.cancel-task-btn {
+  display: inline-block;
+  height: auto;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+  color: #737690;
+  background-color: #cccdde;
+  width: 180px;
+}
+
+.cancel-task-btn:hover {
+  color: white;
+  background-color: #a1a3b3;
+}
+
+.select-op {
+  position: relative;
+  display: inline-block;
+  height: auto;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 19px;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+  color: #585858;
+  background-color: #cccdde;
+  width: 150px;
+  font-weight: bold;
+}
+
+.select-op:hover {
+  color: white;
+  background-color: #a1a3b3;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: -20px;
 }
